@@ -3,8 +3,9 @@ import { products } from "./products";
 
 // Variables
 const filterDivs = ["Vendedor", "Precio", "Estrellas"];
-let selectedSeller;
-let selectedPrice;
+let selectedSeller = "";
+let selectedPrice = "";
+let starsOrder = "";
 
 // NODES
 const app$$ = document.querySelector("#app");
@@ -35,8 +36,8 @@ for (const filter of filterDivs) {
     const select$$ = document.createElement("select");
     select$$.addEventListener("change", () => {
       selectedSeller = select$$.value;
-      filterBy(filter);
-    })
+      applyFilters();
+    });
     filterDiv$$.append(select$$);
     const optionDefault$$ = document.createElement("option");
     optionDefault$$.value = "";
@@ -62,13 +63,13 @@ for (const filter of filterDivs) {
     input$$.type = "number";
     input$$.placeholder = "Menor o igual que";
     input$$.addEventListener("change", () => {
-      selectedPrice = input$$.value
-    })
+      selectedPrice = input$$.value;
+    });
     filterDiv$$.append(input$$);
     const searchPriceButton$$ = document.createElement("button");
     searchPriceButton$$.textContent = "Buscar";
     searchPriceButton$$.addEventListener("click", () => {
-      filterBy(filter);
+      applyFilters();
     });
     filterDiv$$.append(searchPriceButton$$);
   }
@@ -78,17 +79,15 @@ for (const filter of filterDivs) {
     const floorButton$$ = document.createElement("button");
     floorButton$$.textContent = "Mayor a menor";
     floorButton$$.addEventListener("click", () => {
-      clearFilters();
-      const filter = [...products].sort((a, b) => b.stars - a.stars); // [...products] hace una copia de products para evitar el error al limpiar
-      createAllProducts(filter);
-    })
+      starsOrder = "desc";
+      applyFilters();
+    });
     const ceilButton$$ = document.createElement("button");
     ceilButton$$.textContent = "Menor a mayor";
     ceilButton$$.addEventListener("click", () => {
-      clearFilters();
-      const filter = [...products].sort((a, b) => a.stars - b.stars); // [...products] hace una copia de products para evitar el error al limpiar
-      createAllProducts(filter);
-    })
+      starsOrder = "asc";
+      applyFilters();
+    });
     filterDiv$$.append(floorButton$$);
     filterDiv$$.append(ceilButton$$);
   }
@@ -98,94 +97,140 @@ for (const filter of filterDivs) {
 
 // Clear button
 const clearButton$$ = document.createElement("button");
-clearButton$$.id = "clear"
+clearButton$$.id = "clear";
 clearButton$$.textContent = "Limpiar";
 clearButton$$.addEventListener("click", () => {
   clearFilters();
-  createAllProducts();
-})
+});
 filter$$.append(clearButton$$);
 
 // SECTION PRODUCT
 products$$.className = "products";
 
-const createAllProducts = (filter = products) => { // All products are the default filter
-  products$$.innerHTML = "";
-  filter.forEach((product) => {
-    // Card
-    const card$$ = document.createElement("article");
-    card$$.className = "card";
+const createProduct = (product) => {
+  // Card
+  const card$$ = document.createElement("article");
+  card$$.className = "card";
 
-    // Card > img
-    const productImg$$ = document.createElement("img");
-    productImg$$.src = product.image;
-    card$$.append(productImg$$);
+  // Card > img
+  const productImg$$ = document.createElement("img");
+  productImg$$.src = product.image;
+  card$$.append(productImg$$);
 
-    // Card > title
-    const productName$$ = document.createElement("h3");
-    productName$$.textContent = product.name;
-    card$$.append(productName$$);
+  // Card > title
+  const productName$$ = document.createElement("h3");
+  productName$$.textContent = product.name;
+  card$$.append(productName$$);
 
-    // Card > price
-    const productPrice$$ = document.createElement("p");
-    productPrice$$.textContent = product.price + "€";
-    productPrice$$.className = "price";
-    card$$.append(productPrice$$);
+  // Card > price
+  const productPrice$$ = document.createElement("p");
+  productPrice$$.textContent = product.price + "€";
+  productPrice$$.className = "price";
+  card$$.append(productPrice$$);
 
-    // Card > stars + reviews
-    const starsDiv$$ = document.createElement("div");
-    starsDiv$$.className = "stars-div";
-    for (let i = 0; i < 5; i++) {
-      const productStar$$ = document.createElement("div");
-      if (i >= product.stars) {
-        productStar$$.className = "star";
-      } else {
-        productStar$$.className = "fill-star";
-      }
-      starsDiv$$.append(productStar$$);
+  // Card > stars + reviews
+  const starsDiv$$ = document.createElement("div");
+  starsDiv$$.className = "stars-div";
+  for (let i = 0; i < 5; i++) {
+    const productStar$$ = document.createElement("div");
+    if (i >= product.stars) {
+      productStar$$.className = "star";
+    } else {
+      productStar$$.className = "fill-star";
     }
-    card$$.append(starsDiv$$);
+    starsDiv$$.append(productStar$$);
+  }
+  card$$.append(starsDiv$$);
 
-    const reviewNumber$$ = document.createElement("p");
-    reviewNumber$$.textContent = `Reviews: ${product.reviews}`;
-    card$$.append(reviewNumber$$);
+  const reviewNumber$$ = document.createElement("p");
+  reviewNumber$$.textContent = `Reviews: ${product.reviews}`;
+  card$$.append(reviewNumber$$);
 
-    // Card > seller
-    const productSeller$$ = document.createElement("p");
-    productSeller$$.textContent = `Vendido por: `;
-    const spantext$$ = document.createElement("span");
-    spantext$$.textContent = product.seller;
-    productSeller$$.append(spantext$$);
-    card$$.append(productSeller$$);
+  // Card > seller
+  const productSeller$$ = document.createElement("p");
+  productSeller$$.textContent = `Vendido por: `;
+  const spantext$$ = document.createElement("span");
+  spantext$$.textContent = product.seller;
+  productSeller$$.append(spantext$$);
+  card$$.append(productSeller$$);
 
-    products$$.append(card$$);
-  });
+  products$$.append(card$$);
+
+  // Fix suggestedProducts render
+  return card$$;
+};
+
+const createAllProducts = (filter = products) => {
+  // All products are the default filter
+  products$$.innerHTML = "";
+
+  // If filters doesn't show products
+  if (filter.length === 0) {
+    const noProductsDiv$$ = document.createElement("div");
+    noProductsDiv$$.className = "no-products";
+
+    const noProductsMessage$$ = document.createElement("p");
+    noProductsMessage$$.textContent = "Productos no encontrados";
+    noProductsDiv$$.append(noProductsMessage$$);
+
+    // Create 3 suggested products
+    const suggestedProducts = [];
+
+    while (suggestedProducts.length < 3) {
+      const randomIndex = Math.floor(Math.random() * products.length);
+      const randomProduct = products[randomIndex];
+      if (!suggestedProducts.includes(randomProduct)) {
+        suggestedProducts.push(randomProduct);
+      }
+    }
+
+    const suggestionsHeader$$ = document.createElement("h3");
+    suggestionsHeader$$.textContent = "Productos Sugeridos:";
+    noProductsDiv$$.append(suggestionsHeader$$);
+
+    products$$.append(noProductsDiv$$);
+    
+    suggestedProducts.forEach((product) => {
+      products$$.append(createProduct(product));
+    });
+
+  }
+
+  filter.forEach((product) => createProduct(product));
 };
 
 const clearFilters = () => {
   selectedSeller = "";
   selectedPrice = "";
+  starsOrder = "";
   document.querySelector("select").value = "";
   document.querySelector("input[type='number']").value = "";
-}
+  applyFilters();
+};
 
-const filterBy = (filterType) => {
-  if (filterType === "Vendedor") {
-    selectedPrice = "";
-    document.querySelector("input[type='number']").value = "";
-    const filter = products.filter((product) => {
-      return product.seller === selectedSeller || selectedSeller === "";
-    });
-    createAllProducts(filter);
-  } else if (filterType === "Precio") {
-    selectedSeller = "";
-    document.querySelector("select").value = "";
-    const filter = products.filter((product) => {
-      return product.price <= selectedPrice || selectedPrice === "";
-    })
-    createAllProducts(filter);
+const applyFilters = () => {
+  let filteredProducts = products;
+
+  if (selectedSeller) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.seller === selectedSeller
+    );
   }
-}
+
+  if (selectedPrice) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.price <= selectedPrice
+    );
+  }
+
+  if (starsOrder) {
+    filteredProducts = filteredProducts.sort((a, b) => {
+      return starsOrder === "asc" ? a.stars - b.stars : b.stars - a.stars;
+    });
+  }
+
+  createAllProducts(filteredProducts);
+};
 
 // Add nodes
 document.body.insertBefore(header$$, app$$);
@@ -193,4 +238,4 @@ app$$.append(filter$$);
 app$$.append(products$$);
 
 // Render
-createAllProducts();
+applyFilters();
