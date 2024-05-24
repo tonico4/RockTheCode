@@ -1,0 +1,24 @@
+.card {
+  padding: 10px;
+  width: 236px;
+  margin: 0 auto;
+  height: fit-content;
+}
+
+.card:hover {
+  opacity: 0.5;
+}
+
+.card * {
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+.card a {
+  display: block;
+  width: 100%;
+}
+
+.card img {
+  width: 100%;
+}
