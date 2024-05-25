@@ -1,0 +1,15 @@
+.not-found {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  gap: 3rem;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.not-found p {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}

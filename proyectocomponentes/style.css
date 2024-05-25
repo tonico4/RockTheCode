@@ -19,13 +19,13 @@
 header {
   height: 10vh;
   display: flex;
-  align-items: end;
+  align-items: center;
   gap: 18%;
   padding: 10px 40px;
 }
 
 a > img {
-  width: 30px;
+  width: 80%;
 }
 
 header > input {

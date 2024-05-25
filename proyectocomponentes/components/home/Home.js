@@ -3,6 +3,7 @@ import { Card } from "../card/Card";
 
 export const Home = () => {
   const main = document.querySelector("main");
+  main.innerHTML = ``;
 
   const printInitial = async () => {
     // UNSPLASH

@@ -1,0 +1,12 @@
+.suggestionbutton {
+  border: 1px solid transparent;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  background-color: var(--tertiary-color);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.suggestionbutton:hover {
+  border: 1px solid var(--secondary-color);
+}

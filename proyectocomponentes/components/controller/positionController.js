@@ -1,1 +1,0 @@
-// TODO: Calc card position on display and translate card on y-axis.
