@@ -1,0 +1,18 @@
+.menubtn {
+  background-color: transparent;
+  color: var(--font-color);
+  font-size: var(--font-m);
+  padding: 20px;
+  border: none;
+}
+
+.menubtn:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  border-radius: 10px 10px 0 0;
+  color: var(--tertiary-color);
+}
+
+.selected {
+  color: var(--tertiary-color);
+}

@@ -1,0 +1,45 @@
+.usercard {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: fit-content;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.avatar {
+  border-radius: 10%;
+  height: 100%;
+}
+
+.userinfo p {
+  font-size: var(--font-m);
+  color: var(--font-color);
+}
+
+.userinfo p:first-child {
+  font-size: 2rem;
+  padding-bottom: 0.7rem;
+}
+
+.infobox {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-evenly;
+}
+
+.infobox svg {
+  width: 2rem;
+  height: 2rem;
+  fill: white;
+}
+
+.infobox svg:hover {
+  fill: var(--tertiary-color);
+}
+
+.socialbox {
+  display: flex;
+  gap: 1.5rem;
+}
