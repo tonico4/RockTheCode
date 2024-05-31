@@ -1,0 +1,46 @@
+.contact {
+  width: 40%;
+  padding: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.divform {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.divform > label, .divform > input, .divform > textarea {
+  font-size: var(--font-l);
+}
+
+.divform > label {
+  color: var(--font-color);
+}
+
+.divform > input, .divform > textarea {
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+form > button {
+  font-size: var(--font-l);
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+form > button:hover {
+  color: var(--tertiary-color);
+  background-color: var(--primary-color);
+  border-color: var(--tertiary-color);
+}

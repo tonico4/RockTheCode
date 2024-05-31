@@ -1,4 +1,7 @@
 .viewcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--secondary-color);
   width: 80%;
   border-radius: 0 0 10px 10px;
