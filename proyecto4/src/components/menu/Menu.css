@@ -1,5 +1,6 @@
 .menu {
   width: 80%;
+  min-width: 667px;
   display: flex;
   justify-content: end;
   gap: 1rem;

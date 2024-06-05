@@ -1,6 +1,9 @@
 .contact {
   width: 40%;
   padding: 2rem;
+  border-radius: 20px;
+  background-color: var(--transparent-color);
+  min-width: 400px;
 }
 
 form {
@@ -29,6 +32,10 @@ form {
 .divform > input, .divform > textarea {
   border-radius: 10px;
   padding: 1rem;
+}
+
+.divform > input:focus, .divform > textarea:focus {
+  outline-color: var(--tertiary-color);
 }
 
 form > button {

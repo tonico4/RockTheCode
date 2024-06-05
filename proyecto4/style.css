@@ -11,6 +11,7 @@
   --primary-color: #042236;
   --secondary-color: #143347;
   --tertiary-color: rgb(253, 128, 18);
+  --transparent-color: #ffffff18;
 }
 
 * {
@@ -37,8 +38,9 @@ html {
 }
 
 header {
-  width: 100%;
+  width: 80%;
   height: 40vh;
+  margin: 0 auto;
 }
 
 main {
@@ -59,4 +61,5 @@ footer {
   width: 100%;
   font-size: var(--font-s);
   font-weight: bold;
+  margin-top: 3rem;
 }

@@ -1,0 +1,32 @@
+.educationcard {
+  width: 40%;
+  min-width: 453px;
+  color: var(--font-color);
+  background-color: var(--transparent-color);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.educationcard h3 {
+  color: black;
+  font-size: var(--font-xl);
+}
+
+.educationcard i {
+  color: var(--tertiary-color);
+  opacity: 0.7;
+  text-decoration: underline;
+  font-size: var(--font-l);
+}
+
+.educationcard ul {
+  padding-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.educationcard li {
+  font-size: 1.6rem;
+}
