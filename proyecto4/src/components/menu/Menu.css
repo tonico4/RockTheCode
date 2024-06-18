@@ -1,7 +1,29 @@
 .menu {
   width: 80%;
-  min-width: 667px;
   display: flex;
   justify-content: end;
   gap: 1rem;
+}
+
+@media (max-width: 915px) {
+  .menu {
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

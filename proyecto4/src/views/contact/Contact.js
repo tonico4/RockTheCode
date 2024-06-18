@@ -5,6 +5,11 @@ export const Contact = () => {
   contact.className = "contact";
 
   const form = document.createElement("form");
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    alert("Enviado!");
+    form.reset();
+  };
   const nameField = createField("Name", "John");
   const emailField = createField("Email", "email@gmail.com", "email");
 
@@ -33,7 +38,11 @@ export const Contact = () => {
   return contact;
 };
 
-const createField = (textLabel = "text", textPlaceholder = "placeholder", inputType = "text") => {
+const createField = (
+  textLabel = "text",
+  textPlaceholder = "placeholder",
+  inputType = "text"
+) => {
   const divField = document.createElement("div");
   divField.className = "divform";
 

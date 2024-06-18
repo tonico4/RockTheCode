@@ -63,3 +63,27 @@ footer {
   font-weight: bold;
   margin-top: 3rem;
 }
+
+@media (max-width: 915px) {
+  #app {
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  footer {
+    padding: 1rem;
+    height: 10vh;
+  }
+}
+
+@media (max-width: 760px) {
+  header {
+    height: auto;
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+.experience {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience h3 {
+  color: var(--tertiary-color);
+  opacity: 0.9;
+  text-decoration: underline;
+  padding-bottom: 0.4rem;
+}
+
+.experience span {
+  font-weight: bold;
+  display: block;
+  padding-bottom: 0.7rem;
+}
+
+.experience p {
+  font-size: var(--font-l);
+  color: var(--font-color);
+}
+
+.infocard {
+  padding: 1rem;
+  border: 1px solid var(--tertiary-color);
+  background-color: var(--transparent-color);
+  border-radius: 5px;
+}
+
+@media (max-width: 760px) {
+ .experience {
+  width: 80%;
+ } 
+}

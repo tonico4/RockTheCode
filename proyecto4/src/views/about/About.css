@@ -1,6 +1,14 @@
 .about {
   color: var(--font-color);
   font-size: 1.4rem;
-  width: 50%;
+  width: 80%;
   padding: 5rem;
+  background-color: var(--transparent-color);
+  border-radius: 20px;
+}
+
+@media (max-width: 760px) {
+  .about {
+    padding: 2rem;
+  }
 }

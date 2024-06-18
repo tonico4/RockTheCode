@@ -16,3 +16,9 @@
 .selected {
   color: var(--tertiary-color);
 }
+
+@media (max-width: 915px) {
+  .menubtn:hover {
+    border-radius: 0;
+  }
+}

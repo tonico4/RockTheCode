@@ -19,6 +19,6 @@ main.append(Menu());
 main.append(ViewContainer());
 
 const copy = document.createElement("p");
-copy.textContent = `${data.name} - ${date}`;
+copy.textContent = `©️ ${data.name} - ${date}`;
 footer.append(copy);
 

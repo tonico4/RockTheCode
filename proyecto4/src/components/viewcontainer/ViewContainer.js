@@ -1,4 +1,3 @@
-import { About } from '../../views/about/About';
 import { Projects } from '../../views/projects/Projects';
 import './ViewContainer.css';
 

@@ -43,3 +43,22 @@
   display: flex;
   gap: 1.5rem;
 }
+
+@media (max-width: 915px) {
+  .infobox {
+    height: 100%;
+    justify-content: end;
+  }
+}
+
+@media (max-width: 760px) {
+  .usercard {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .usercard > img {
+    width: 200px;
+  }
+}

@@ -30,3 +30,13 @@
 .educationcard li {
   font-size: 1.6rem;
 }
+
+@media (max-width: 760px) {
+  .educationcard {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+  }
+}
