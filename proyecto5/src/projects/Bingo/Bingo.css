@@ -1,0 +1,19 @@
+.controlPanel {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mainArea {
+  height: 60%;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: var(--tertiary-color);
+}
+
+.ballGridContainer {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}

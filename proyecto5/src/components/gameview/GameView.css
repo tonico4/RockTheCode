@@ -1,0 +1,6 @@
+main {
+  min-height: 75svh;
+  width: 60svw;
+  border: 5px double var(--tertiary-color);
+  background-color: white;
+}

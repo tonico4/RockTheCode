@@ -1,0 +1,13 @@
+.board2 {
+  width: 100%;
+  background-color: var(--tertiary-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .board2 {
+    height: 80%;
+  }
+}

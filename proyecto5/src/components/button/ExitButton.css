@@ -1,0 +1,14 @@
+.exitBtn {
+  background-color: var(--tertiary-color);
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 7px;
+  height: fit-content;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .exitBtn {
+    font-size: 13px;
+  }
+}

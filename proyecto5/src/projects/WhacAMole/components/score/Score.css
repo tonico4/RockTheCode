@@ -1,0 +1,14 @@
+.score {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .score {
+    padding: 5px;
+    height: fit-content;
+  }
+}

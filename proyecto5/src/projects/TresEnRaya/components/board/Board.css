@@ -1,0 +1,29 @@
+.board1 {
+  width: 100%;
+  background-color: var(--tertiary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board1 > table {
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-template-rows: repeat(3, minmax(100px, 1fr));
+  padding: 5px;
+}
+
+.board1 > table > td {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+td > img {
+  width: 80%;
+  height: 80%;
+  background-size: contain;
+}

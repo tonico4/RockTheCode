@@ -1,0 +1,13 @@
+.landBoard {
+  width: 80%;
+  background-color: burlywood;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .landBoard {
+    width: 100%;
+    height: 80%;
+  }
+}

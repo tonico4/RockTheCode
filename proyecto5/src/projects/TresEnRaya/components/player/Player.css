@@ -1,0 +1,30 @@
+.player {
+  width: 40%;
+  height: 60%;
+  background-color: aliceblue;
+  padding: 5px 30px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+
+.player > img {
+  height: 75%;
+}
+
+.player > span {
+  font-size: 1.5rem;
+}
+
+.currentPlayer {
+  border-bottom: 2px solid var(--tertiary-color);
+}
+
+@media (max-width: 768px) {
+  .player {
+    width: 48%;
+  }
+}
