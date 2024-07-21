@@ -1,5 +1,4 @@
 .player {
-  width: 40%;
   height: 60%;
   background-color: aliceblue;
   padding: 5px 30px;
@@ -12,15 +11,11 @@
 }
 
 .player > img {
-  height: 75%;
-}
-
-.player > span {
-  font-size: 1.5rem;
+  height: 100%;
 }
 
 .currentPlayer {
-  border-bottom: 2px solid var(--tertiary-color);
+  box-shadow: inset 0px 0px 5px 1px var(--tertiary-color)
 }
 
 @media (max-width: 768px) {

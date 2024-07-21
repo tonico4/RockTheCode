@@ -5,7 +5,7 @@ const WinMessage = (player, root) => {
   modal.className = "modal";
 
   const message = document.createElement("p");
-  message.textContent = `${player} ha sido el ganador!!`;
+  message.textContent = player === "Empate" ? "Has empatado!" : `${player} ha ganado!!`;
 
   const closeMessage = document.createElement("button");
   closeMessage.textContent = "Cerrar";

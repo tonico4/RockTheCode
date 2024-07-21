@@ -74,6 +74,7 @@ export function takeTurn(event, root) {
   if (winner) {
     gameOver = true;
     printWinner(winner, root);
+    
   } else {
     currentPlayer = currentPlayer === player1 ? player2 : player1;
     sessionStorage.setItem("currentPlayer", currentPlayer);
@@ -105,8 +106,20 @@ function printWinner(winner, root) {
 // Updates
 function updateInfo(root) {
   const turnInfo = root.querySelector("#turnInfo");
+  const crossPlayer = root.querySelector("#X");
+  const circlePlayer = root.querySelector("#O");
+
+  crossPlayer.classList.remove("currentPlayer");
+  circlePlayer.classList.remove("currentPlayer");
+
   if (turnInfo) {
     turnInfo.textContent = currentPlayer === undefined ? "-" : `Es el turno de: ${currentPlayer}`;
+  }
+  
+  if (currentPlayer === player1) {
+    crossPlayer.classList.add("currentPlayer");
+  } else if (currentPlayer === player2) {
+    circlePlayer.classList.add("currentPlayer");
   }
 }
 
@@ -121,18 +134,20 @@ function updateBoardUI(root) {
 
 // Reset
 export function resetGame(root) {
-  virtualBoard.fill(null);
+  virtualBoard = Array(9).fill(null);
   gameOver = false;
   currentPlayer = undefined;
+  winner = null;
   sessionStorage.removeItem("virtualBoard");
   sessionStorage.removeItem("currentPlayer");
-  startGame(root);
+  initializeGame(root);
 }
 
 export function exitGame() {
-  virtualBoard.fill(null);
+  virtualBoard = Array(9).fill(null);
   gameOver = false;
   currentPlayer = undefined;
+  winner = null;
   sessionStorage.removeItem("virtualBoard");
   sessionStorage.removeItem("currentPlayer");
 }

@@ -6,8 +6,7 @@ let score = 0;
 let seconds = 60;
 let moleInterval;
 let countdown;
-
-const root = document.getElementById("root");
+export let record = parseInt(localStorage.getItem("record")) || 0;
 
 // Init Game
 export function initializeGame(root) {
@@ -37,6 +36,7 @@ function timer() {
     }
 
     if (seconds === 0) {
+      updateRecord(score);
       clearInterval(moleInterval);
       clearInterval(countdown);
     }
@@ -72,6 +72,14 @@ function updateTime(time) {
   document.querySelector(".timer").textContent = `Tiempo: ${time} seg`;
 }
 
+function updateRecord(newScore) {
+  if (newScore >= record) {
+    record = newScore;
+    localStorage.setItem("record", record.toString());
+    document.querySelector(".record").textContent = `Record: ${record}`;
+  }
+}
+
 // Reset
 export function resetGame(root) {
   clearInterval(countdown);
@@ -83,6 +91,7 @@ export function resetGame(root) {
 
 // Exit
 export function exitGame() {
+  updateRecord(score);
   clearInterval(countdown);
   clearInterval(moleInterval);
   score = 0;
