@@ -62,19 +62,27 @@ const getProductsByCategory = async (req, res, next) => {
 const updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
+
+    const product = Product.findById(id);
+
+    if (!product) {
+      return res.status(404).json("Producto no encontrado!");
+    }
+
+    const newData = new Product({
+      name: req.body.name || product.name,
+      price: req.body.price || product.price,
+      category: req.body.category || product.category
+    });
+
+    newData._id = id;
+
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
-      {
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category,
-      },
+      newData,
       { new: true }
     );
-    if (!updatedProduct) {
-      return res.status(404).json("Producto no encontrado! ❌");
-    }
-    return res.status(200).json("El producto ha sido actualizado ✅");
+    return res.status(200).json("El producto ha sido actualizado ✅", updatedProduct);
   } catch (error) {
     return res.status(400).json("Error al actualizar producto! ❌");
   }
