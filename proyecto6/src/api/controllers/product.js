@@ -69,11 +69,11 @@ const updateProduct = async (req, res, next) => {
       return res.status(404).json("Producto no encontrado!");
     }
 
-    const newData = new Product({
+    const newData = {
       name: req.body.name || product.name,
       price: req.body.price || product.price,
       category: req.body.category || product.category
-    });
+    };
 
     newData._id = id;
 

@@ -1,12 +1,14 @@
 const SuperMarket = require("../models/supermarket");
 
+const uniqueProducts = (products) => [...new Set(products)];
+
 // CREATE
 const createSuperMarket = async (req, res, next) => {
   try {
     const newSuperMarket = new SuperMarket({
       name: req.body.name,
       address: req.body.address,
-      products: req.body.products,
+      products: uniqueProducts(req.body.products)
     });
     await newSuperMarket.save();
     return res.status(201).json("Creado con éxito ✅");
@@ -66,11 +68,11 @@ const updateSuperMarket = async (req, res, next) => {
       return res.status(404).json("Supermercado no encontrado!");
     }
 
-    const newData = new SuperMarket({
+    const newData = {
       name: req.body.name || supermarket.name,
       address: req.body.address || supermarket.address,
-      products: req.body.products || supermarket.products,
-    });
+      products: uniqueProducts(req.body.products) || supermarket.products,
+    };
 
     newData._id = id;
 
