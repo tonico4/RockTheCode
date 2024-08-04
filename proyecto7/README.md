@@ -17,10 +17,10 @@ Body:
 
 ```json
 {
-  username: String,
-  email: String,
-  password: String,
-  role: String ["admin", "client"]
+  "username": "String",
+  "email": "String",
+  "password": "String",
+  "role": "String" ["admin", "client"]
 }
 ```
 
@@ -33,8 +33,8 @@ Body:
 
 ```json
 {
-  username: String,
-  password: String
+  "username": "String",
+  "password": "String"
 }
 ```
 
@@ -179,10 +179,10 @@ Body:
 
 ```json
 {
-  username: String,
-  email: String,
-  password: String,
-  role: String ["admin", "client"] // Solo si eres admin
+  "username": "String",
+  "email": "String",
+  "password": "String",
+  "role": "String" ["admin", "client"] // Solo si eres admin
 }
 ```
 
@@ -218,10 +218,10 @@ Body:
 
 ```json
 {
-  name: String,
-  address: String,
-  phone: Number,
-  foodStyle: String ["chino", "español", "tailandés", "americano", "griego"]
+  "name": "String",
+  "address": "String",
+  "phone": "Number",
+  "foodStyle": "String" ["chino", "español", "tailandés", "americano", "griego"]
 }
 ```
 
@@ -232,7 +232,30 @@ Body:
 
 Respuesta:
 
-// TODO
+```json
+[
+  {
+    "_id": "66a787c7fb6298113d1d86c1",
+    "name": "Restaurante Chino Dragon",
+    "address": "Calle Falsa 123, Ciudad, País",
+    "phone": 123456789,
+    "foodStyle": "chino",
+    "__v": 0,
+    "createdAt": "2024-07-29T12:15:03.208Z",
+    "updatedAt": "2024-07-29T12:15:03.208Z"
+  },
+  {
+    "_id": "66a787c7fb6298113d1d86c2",
+    "name": "Tapas Españolas",
+    "address": "Avenida Principal 456, Ciudad, País",
+    "phone": 987654321,
+    "foodStyle": "español",
+    "__v": 0,
+    "createdAt": "2024-07-29T12:15:03.209Z",
+    "updatedAt": "2024-07-29T12:15:03.209Z"
+  }
+]
+```
 
 ### Obtener un restaurante por id
 
@@ -347,10 +370,10 @@ Body:
 
 ```json
 {
-  restaurantId: String,
-  date: String,
-  time: String,
-  numberOfPeople: Number
+  "restaurantId": "String",
+  "date": "String",
+  "time": "String",
+  "numberOfPeople": "Number"
 }
 ```
 
@@ -472,11 +495,12 @@ Body:
 
 ```json
 {
-  "date": "06/01/2000",
-  "time": "15:00",
-  "numberOfPeople": 6
+  "date": "String",
+  "time": "String",
+  "numberOfPeople": "Number"
 }
 ```
+
 ### Eliminar reserva (cliente y admin)
 
 - Ruta: `/api/v1/reservations/:id`
