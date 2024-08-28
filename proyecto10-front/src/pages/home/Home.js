@@ -1,3 +1,4 @@
+import AuthForm from '../../components/authForm/AuthForm';
 import Paragraph from '../../components/paragraphs/Paragraph';
 import "./home.css";
 
@@ -31,6 +32,7 @@ const Home = () => {
   }
 
   auth.className = "authContainer";
+  auth.append(AuthForm());
 
   main.append(section, auth);
 

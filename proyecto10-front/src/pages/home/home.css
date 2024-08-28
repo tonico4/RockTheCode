@@ -38,8 +38,11 @@ main {
   width: 25%;
   height: 70%;
   max-height: 90%;
-  background: linear-gradient(#4A90E2, #064ba6);
-
+  padding: 15px 25px;
+  background: linear-gradient(var(--primary-color), var(--tertiary-color));
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: 4px 6px 9px 1px rgb(74, 144, 226, 0.8);
 }
 
 footer {
