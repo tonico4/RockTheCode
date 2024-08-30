@@ -12,7 +12,7 @@ const { isAuth, isAdmin } = require('../../middlewares/isAuth');
 const assistantRouter = express.Router();
 
 assistantRouter.post("/register", register);
-assistantRouter.get("/login", login);
+assistantRouter.post("/login", login);
 assistantRouter.get("/", isAuth, getAllAssistants);
 assistantRouter.put("/:id", isAdmin, updateAssistantData);
 assistantRouter.put("/:id/password", isAuth, updatePassword);
