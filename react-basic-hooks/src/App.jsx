@@ -16,6 +16,7 @@ function App() {
   };
 
   const handleSearch = () => {
+    setCharacters([]);
     if (word.length > 0) {
       getChar(word);
     } else {
