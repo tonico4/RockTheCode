@@ -1,0 +1,36 @@
+.search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search > input {
+  height: 30px;
+  width: 250px;
+  font-size: 1rem;
+  padding: 5px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.search > input::placeholder {
+  color: rgb(182, 182, 182);
+}
+
+.search-btn {
+  font-size: 0.9rem;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  height: fit-content;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+}
+
+.search-btn:hover {
+  background-color: rgb(62, 62, 62);
+  cursor: pointer;
+  border: 1px solid rgb(255, 154, 3);
+}
